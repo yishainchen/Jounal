@@ -11,7 +11,11 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    UILabel *iv1;
+    UITextField *iv2;
 
+}
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
 @end
 
@@ -33,9 +37,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EricTableViewCell *cell = (EricTableViewCell *) [self.tabelView cellForRowAtIndexPath:indexPath];
     static NSString *CellIdentifier = @"Cell";
+    
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        iv1 = (UILabel *)[cell viewWithTag:200];
+        iv2 = (UITextField *)[cell viewWithTag:300];
     }
     return cell;
 }
@@ -52,11 +60,13 @@
 
 -(void)getdata {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:@"http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=fcbb2a25b234976333ca4a3cf30c4388%3A9%3A56417405"
-       parameters:@{@"api_key":@"fcbb2a25b234976333ca4a3cf30c4388:9:56417405"}
+    [manager GET:@"http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=fcbb2a25b234976333ca4a3cf30c4388%3A9%3A56417405"
+       parameters:@{@"api-key":@"fcbb2a25b234976333ca4a3cf30c4388:9:56417405"}
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               NSLog(@"success");
               NSLog(@"response: %@", responseObject);
+              
+
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"failure: %@", error);
           }];
