@@ -11,5 +11,6 @@
 @interface NextViewController : UIViewController
 
 @property NSString *strurl;
+@property (weak, nonatomic) IBOutlet UIWebView *webUrl;
 
 @end
