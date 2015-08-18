@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "EricTableViewCell.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -20,6 +21,7 @@
     [super viewDidLoad];
     self.tabelView.delegate = self;
     self.tabelView.dataSource = self;
+    [self getdata];
     // Do any additional setup after loading the view.
 }
 
@@ -48,6 +50,17 @@
     return 1;
 }
 
+-(void)getdata {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:@"http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=fcbb2a25b234976333ca4a3cf30c4388%3A9%3A56417405"
+       parameters:@{@"api_key":@"fcbb2a25b234976333ca4a3cf30c4388:9:56417405"}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              NSLog(@"success");
+              NSLog(@"response: %@", responseObject);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"failure: %@", error);
+          }];
+}
 /*
 #pragma mark - Navigation
 
