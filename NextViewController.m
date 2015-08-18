@@ -10,13 +10,22 @@
 #import "HomeViewController.h"
 #import "LineActivity.h"
 @interface NextViewController ()
+{
 
+    NSString *webString;
+}
 @end
 
 @implementation NextViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    webString = self.strurl;
+    
+    NSURL *url = [NSURL URLWithString:webString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webUrl loadRequest:request];
+   
     // Do any additional setup after loading the view.
 }
 

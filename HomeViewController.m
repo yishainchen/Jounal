@@ -9,11 +9,14 @@
 #import "HomeViewController.h"
 #import "EricTableViewCell.h"
 #import <AFNetworking/AFNetworking.h>
-
+#import "NextViewController.h"
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UILabel *iv1;
-    UITextField *iv2;
+    UITextView *iv2;
+    NSDictionary *dict;
+    int i;
+    
 
 }
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
@@ -37,20 +40,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EricTableViewCell *cell = (EricTableViewCell *) [self.tabelView cellForRowAtIndexPath:indexPath];
     static NSString *CellIdentifier = @"Cell";
-    
+    i = indexPath.row;
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         iv1 = (UILabel *)[cell viewWithTag:200];
-        iv2 = (UITextField *)[cell viewWithTag:300];
+        iv2 = (UITextView *)[cell viewWithTag:300];
+        
     }
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 10;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -65,8 +69,11 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               NSLog(@"success");
               NSLog(@"response: %@", responseObject);
-              
-
+              dict = responseObject;
+              NSLog(@"eric = %@",dict[@"response"][@"docs"][i][@"headline"][@"main"]);
+              iv1.text = dict[@"response"][@"docs"][i][@"headline"][@"main"];
+              iv2.text = dict[@"response"][@"docs"][i][@"lead_paragraph"];
+              self.urlString = dict[@"response"][@"docs"][i][@"web_url"];
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"failure: %@", error);
           }];
@@ -80,5 +87,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NextViewController *nextVC = segue.destinationViewController;
+    nextVC.strurl = self.urlString;
 
+}
 @end

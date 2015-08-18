@@ -206,7 +206,7 @@
             </objects>
             <point key="canvasLocation" x="526" y="1195"/>
         </scene>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="ws9-2O-8Af">
             <objects>
                 <viewController storyboardIdentifier="home" id="l7x-tb-wlm" customClass="HomeViewController" sceneMemberID="viewController">
@@ -277,17 +277,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <button opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUJ-6h-bIa">
-                                                    <rect key="frame" x="30" y="181" width="260" height="30"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <state key="normal" title="I dream a dream">
-                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="zyU-On-uyq" kind="modal" id="9Ts-Y0-frH"/>
-                                                    </connections>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnb-ws-xsu">
                                                     <rect key="frame" x="30" y="287" width="128" height="30"/>
                                                     <state key="normal" title="continue reading...">
@@ -295,6 +284,21 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Df8-xo-aT5">
+                                                    <rect key="frame" x="20" y="189" width="294" height="120"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="zyU-On-uyq" kind="push" id="IdL-pw-RGL"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I dream a dream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sv-66-zZQ">
+                                                    <rect key="frame" x="30" y="187" width="245" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -303,14 +307,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="1439303046_shop" id="dDN-BX-cNV"/>
+                    <navigationItem key="navigationItem" id="EoB-3o-VMp"/>
                     <connections>
                         <outlet property="tabelView" destination="gJ3-wG-RaK" id="hj0-Ku-kwu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZx-S9-KA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176" y="-12"/>
+            <point key="canvasLocation" x="1708" y="-12"/>
         </scene>
         <!--Next View Controller-->
         <scene sceneID="5Xz-lt-Vnk">
@@ -371,13 +375,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UsI-rm-ngi"/>
                     <connections>
                         <outlet property="webUrl" destination="LLX-fN-nY3" id="xXj-ab-MhV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bkw-XQ-nbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579" y="-12"/>
+            <point key="canvasLocation" x="2111" y="-12"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fPK-t6-4tl">
@@ -391,7 +396,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="l7x-tb-wlm" kind="relationship" relationship="viewControllers" id="jm4-eH-35t"/>
+                        <segue destination="cEJ-Yu-VlC" kind="relationship" relationship="viewControllers" id="jm4-eH-35t"/>
                         <segue destination="dhD-4e-mj0" kind="relationship" relationship="viewControllers" id="LNW-mQ-PPS"/>
                         <segue destination="1gd-LM-mKN" kind="relationship" relationship="viewControllers" id="nX6-yz-3mo"/>
                         <segue destination="aGe-XG-84F" kind="relationship" relationship="viewControllers" id="VvK-1c-2PA"/>
@@ -400,6 +405,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npA-wc-NyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="726" y="303"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="ygY-yB-u0A">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cEJ-Yu-VlC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="1439303046_shop" id="dDN-BX-cNV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="saz-Ye-5nC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="l7x-tb-wlm" kind="relationship" relationship="rootViewController" id="Uid-nP-RUZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4w7-RV-9Ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1176" y="-12"/>
         </scene>
     </scenes>
     <resources>
