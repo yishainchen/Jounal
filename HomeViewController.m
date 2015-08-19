@@ -12,12 +12,9 @@
 #import "NextViewController.h"
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    UILabel *iv1;
-    UITextView *iv2;
+  
     NSDictionary *dict;
     int i;
-    
-
 }
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
 @end
@@ -29,6 +26,9 @@
     self.tabelView.delegate = self;
     self.tabelView.dataSource = self;
     [self getdata];
+    self.navigationItem.hidesBackButton = YES;
+    //隱藏top
+    
     // Do any additional setup after loading the view.
 }
 
@@ -41,12 +41,27 @@
     EricTableViewCell *cell = (EricTableViewCell *) [self.tabelView cellForRowAtIndexPath:indexPath];
     static NSString *CellIdentifier = @"Cell";
     i = indexPath.row;
+    NSLog(@"i = %i",i);
+    UIImageView *iv = (UIImageView *)[cell viewWithTag:100];
+    iv.image = nil;//不重複使用畫面
+//    PFFile *imageData = event[@"image"];
+//    [imageData getDataInBackgroundWithBlock:^(NSData *imgData , NSError *error) {
+//        if (error == nil) {
+//            iv.image = [UIImage imageWithData:imgData];
+//            iv.backgroundColor = [UIColor clearColor];
+//        }
+//        else {
+//            
+//        }
+//    }];
+    UILabel *iv1 = (UILabel *)[cell viewWithTag:200];
+    UITextView *iv2 = (UITextView *)[cell viewWithTag:300];
+    
+    iv1.text = dict[@"response"][@"docs"][i][@"headline"][@"main"];
+    iv2.text = dict[@"response"][@"docs"][i][@"lead_paragraph"];
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        iv1 = (UILabel *)[cell viewWithTag:200];
-        iv2 = (UITextView *)[cell viewWithTag:300];
         
     }
     return cell;
@@ -71,8 +86,7 @@
               NSLog(@"response: %@", responseObject);
               dict = responseObject;
               NSLog(@"eric = %@",dict[@"response"][@"docs"][i][@"headline"][@"main"]);
-              iv1.text = dict[@"response"][@"docs"][i][@"headline"][@"main"];
-              iv2.text = dict[@"response"][@"docs"][i][@"lead_paragraph"];
+             
               self.urlString = dict[@"response"][@"docs"][i][@"web_url"];
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"failure: %@", error);
