@@ -12,7 +12,8 @@
 #import "NextViewController.h"
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-  
+    UILabel *iv1;
+    UITextView *iv2;
     NSDictionary *dict;
     int i;
 }
@@ -26,6 +27,7 @@
     self.tabelView.delegate = self;
     self.tabelView.dataSource = self;
     [self getdata];
+    
     self.navigationItem.hidesBackButton = YES;
     //隱藏top
     
@@ -40,7 +42,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EricTableViewCell *cell = (EricTableViewCell *) [self.tabelView cellForRowAtIndexPath:indexPath];
     static NSString *CellIdentifier = @"Cell";
+      cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     i = indexPath.row;
+    [self getdata];
     NSLog(@"i = %i",i);
     UIImageView *iv = (UIImageView *)[cell viewWithTag:100];
     iv.image = nil;//不重複使用畫面
@@ -54,12 +58,13 @@
 //            
 //        }
 //    }];
-    UILabel *iv1 = (UILabel *)[cell viewWithTag:200];
-    UITextView *iv2 = (UITextView *)[cell viewWithTag:300];
+    iv1 = (UILabel *)[cell viewWithTag:200];
+    iv2 = (UITextView *)[cell viewWithTag:300];
     
     iv1.text = dict[@"response"][@"docs"][i][@"headline"][@"main"];
     iv2.text = dict[@"response"][@"docs"][i][@"lead_paragraph"];
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    self.urlString = dict[@"response"][@"docs"][i][@"web_url"];
+   
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
@@ -87,7 +92,7 @@
               dict = responseObject;
               NSLog(@"eric = %@",dict[@"response"][@"docs"][i][@"headline"][@"main"]);
              
-              self.urlString = dict[@"response"][@"docs"][i][@"web_url"];
+              
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"failure: %@", error);
           }];
