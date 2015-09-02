@@ -8,6 +8,6 @@ pod 'SVProgressHUD'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
-
+pod "SVProgressHUD"
 end
 

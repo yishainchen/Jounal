@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5541E3A0001E8AB297975212 /* libPods-Jounal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C98838579AB52DC3245FE /* libPods-Jounal.a */; };
+		84DA8FF31B96CB2000BF6942 /* My API.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84DA8FF21B96CB2000BF6942 /* My API.txt */; };
 		84E7B2A11B79E32A0042EDF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7B2A01B79E32A0042EDF4 /* main.m */; };
 		84E7B2A41B79E32A0042EDF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7B2A31B79E32A0042EDF4 /* AppDelegate.m */; };
 		84E7B2A71B79E32A0042EDF4 /* Jounal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E7B2A51B79E32A0042EDF4 /* Jounal.xcdatamodeld */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		526C98838579AB52DC3245FE /* libPods-Jounal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jounal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DA8FF21B96CB2000BF6942 /* My API.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "My API.txt"; path = "../../Documents/My API.txt"; sourceTree = "<group>"; };
 		84E7B29B1B79E32A0042EDF4 /* Jounal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jounal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E7B29F1B79E32A0042EDF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E7B2A01B79E32A0042EDF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				84E7B2D21B79FA6E0042EDF4 /* TopStoryViewController.m */,
 				84E7B2CE1B79FA5C0042EDF4 /* BookMarkViewController.h */,
 				84E7B2CF1B79FA5C0042EDF4 /* BookMarkViewController.m */,
+				84DA8FF21B96CB2000BF6942 /* My API.txt */,
 				84E7B2CB1B79FA4C0042EDF4 /* ProfileViewController.h */,
 				84E7B2CC1B79FA4C0042EDF4 /* ProfileViewController.m */,
 				84E7B2C81B79FA380042EDF4 /* HomeViewController.h */,
@@ -276,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DA8FF31B96CB2000BF6942 /* My API.txt in Resources */,
 				84E7B2AD1B79E32A0042EDF4 /* Main.storyboard in Resources */,
 				84E7B2B21B79E32A0042EDF4 /* LaunchScreen.xib in Resources */,
 				84E7B2AF1B79E32A0042EDF4 /* Images.xcassets in Resources */,

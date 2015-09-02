@@ -10,6 +10,7 @@
 #import "EricTableViewCell.h"
 #import <AFNetworking/AFNetworking.h>
 #import "NextViewController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UILabel *iv1;
@@ -24,11 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     self.tabelView.delegate = self;
     self.tabelView.dataSource = self;
     [self getdata];
     
-    self.navigationItem.hidesBackButton = YES;
+    self.navigationController.hidesBarsOnTap = YES;
     //隱藏top
     
     // Do any additional setup after loading the view.
@@ -43,27 +46,36 @@
     EricTableViewCell *cell = (EricTableViewCell *) [self.tabelView cellForRowAtIndexPath:indexPath];
     static NSString *CellIdentifier = @"Cell";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    i = indexPath.row;
+    
     [self getdata];
+    i = indexPath.row;
     NSLog(@"i = %i",i);
     UIImageView *iv = (UIImageView *)[cell viewWithTag:100];
     iv.image = nil;//不重複使用畫面
-//    PFFile *imageData = event[@"image"];
-//    [imageData getDataInBackgroundWithBlock:^(NSData *imgData , NSError *error) {
-//        if (error == nil) {
-//            iv.image = [UIImage imageWithData:imgData];
-//            iv.backgroundColor = [UIColor clearColor];
-//        }
-//        else {
-//            
-//        }
-//    }];
+
+//  iv.image = [UIImage ima];
+
     iv1 = (UILabel *)[cell viewWithTag:200];
     iv2 = (UITextView *)[cell viewWithTag:300];
+
     
     iv1.text = dict[@"response"][@"docs"][i][@"headline"][@"main"];
     iv2.text = dict[@"response"][@"docs"][i][@"lead_paragraph"];
+//    if (dict[@"response"][@"docs"][i][@"multimedia"][0][@"url"] == NULL) {
+//        iv.image = [UIImage imageNamed:@"Venice"];
+//    }
+//    else {
+//        iv.image =dict[@"response"][@"docs"][i][@"multimedia"][0][@"url"];
+//    }
+    
+
+    NSLog(@"image = %@",dict[@"response"][@"docs"][i][@"multimedia"][0][@"url"]);
     self.urlString = dict[@"response"][@"docs"][i][@"web_url"];
+    [SVProgressHUD dismiss];
+
+//    iv.image =
+    
+    
    
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -74,23 +86,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 10;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    return 10;
 }
 
 -(void)getdata {
+    [SVProgressHUD show];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=fcbb2a25b234976333ca4a3cf30c4388%3A9%3A56417405"
        parameters:@{@"api-key":@"fcbb2a25b234976333ca4a3cf30c4388:9:56417405"}
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              NSLog(@"success");
-              NSLog(@"response: %@", responseObject);
+//              NSLog(@"success");
+//              NSLog(@"response: %@", responseObject);
               dict = responseObject;
-              NSLog(@"eric = %@",dict[@"response"][@"docs"][i][@"headline"][@"main"]);
+            
              
               
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
