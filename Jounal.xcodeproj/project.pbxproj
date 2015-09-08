@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5541E3A0001E8AB297975212 /* libPods-Jounal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C98838579AB52DC3245FE /* libPods-Jounal.a */; };
+		8478281F1B99891C00DDF0F9 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8478281D1B99891C00DDF0F9 /* libsqlite3.0.dylib */; };
+		847828201B99891C00DDF0F9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8478281E1B99891C00DDF0F9 /* libsqlite3.dylib */; };
 		84DA8FF31B96CB2000BF6942 /* My API.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84DA8FF21B96CB2000BF6942 /* My API.txt */; };
+		84DA8FF91B974ADD00BF6942 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA8FF81B974ADD00BF6942 /* Singleton.m */; };
 		84E7B2A11B79E32A0042EDF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7B2A01B79E32A0042EDF4 /* main.m */; };
 		84E7B2A41B79E32A0042EDF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7B2A31B79E32A0042EDF4 /* AppDelegate.m */; };
 		84E7B2A71B79E32A0042EDF4 /* Jounal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E7B2A51B79E32A0042EDF4 /* Jounal.xcdatamodeld */; };
@@ -39,7 +42,11 @@
 
 /* Begin PBXFileReference section */
 		526C98838579AB52DC3245FE /* libPods-Jounal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jounal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8478281D1B99891C00DDF0F9 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		8478281E1B99891C00DDF0F9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		84DA8FF21B96CB2000BF6942 /* My API.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "My API.txt"; path = "../../Documents/My API.txt"; sourceTree = "<group>"; };
+		84DA8FF71B974ADD00BF6942 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		84DA8FF81B974ADD00BF6942 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		84E7B29B1B79E32A0042EDF4 /* Jounal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jounal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E7B29F1B79E32A0042EDF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E7B2A01B79E32A0042EDF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -79,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8478281F1B99891C00DDF0F9 /* libsqlite3.0.dylib in Frameworks */,
+				847828201B99891C00DDF0F9 /* libsqlite3.dylib in Frameworks */,
 				5541E3A0001E8AB297975212 /* libPods-Jounal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +105,8 @@
 		84E7B2921B79E32A0042EDF4 = {
 			isa = PBXGroup;
 			children = (
+				84DA8FF71B974ADD00BF6942 /* Singleton.h */,
+				84DA8FF81B974ADD00BF6942 /* Singleton.m */,
 				84E7B2E01B7A1D530042EDF4 /* TopStoryTableViewCell.h */,
 				84E7B2E11B7A1D530042EDF4 /* TopStoryTableViewCell.m */,
 				84E7B2DD1B7A15DD0042EDF4 /* LineActivity.h */,
@@ -183,6 +194,8 @@
 		CD7EA34AF105344A2625F69F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8478281D1B99891C00DDF0F9 /* libsqlite3.0.dylib */,
+				8478281E1B99891C00DDF0F9 /* libsqlite3.dylib */,
 				526C98838579AB52DC3245FE /* libPods-Jounal.a */,
 			);
 			name = Frameworks;
@@ -333,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DA8FF91B974ADD00BF6942 /* Singleton.m in Sources */,
 				84E7B2A41B79E32A0042EDF4 /* AppDelegate.m in Sources */,
 				84E7B2A71B79E32A0042EDF4 /* Jounal.xcdatamodeld in Sources */,
 				84E7B2AA1B79E32A0042EDF4 /* ViewController.m in Sources */,

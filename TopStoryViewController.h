@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <sqlite3.h>
 @interface TopStoryViewController : UIViewController
+{
+    sqlite3 *db;
+    
+    NSMutableArray *TabelDaras;
+
+}
+
+@property (weak, nonatomic) IBOutlet UIView *textSq;
 
 @end

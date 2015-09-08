@@ -8,6 +8,7 @@
 
 #import "TopStoryViewController.h"
 #import "TopStoryTableViewCell.h"
+#import <sqlite3.h>
 @interface TopStoryViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;

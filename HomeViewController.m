@@ -5,7 +5,7 @@
 //  Created by yishain on 8/11/15.
 //  Copyright (c) 2015 yishain. All rights reserved.
 //
-
+#import "ViewController.h"
 #import "HomeViewController.h"
 #import "EricTableViewCell.h"
 #import <AFNetworking/AFNetworking.h>
@@ -18,6 +18,8 @@
     NSDictionary *dict;
     int i;
 }
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
+
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
 @end
 
@@ -25,13 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
     self.tabelView.delegate = self;
     self.tabelView.dataSource = self;
     [self getdata];
     
-    self.navigationController.hidesBarsOnTap = YES;
+    self.navigationController.hidesBarsOnSwipe = YES;
     //隱藏top
     
     // Do any additional setup after loading the view.
@@ -48,26 +49,29 @@
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     [self getdata];
-    i = indexPath.row;
+    i = indexPath.row + 1;
     NSLog(@"i = %i",i);
-    UIImageView *iv = (UIImageView *)[cell viewWithTag:100];
-    iv.image = nil;//不重複使用畫面
-
-//  iv.image = [UIImage ima];
-
+//    UIImageView *iv = (UIImageView *)[cell viewWithTag:100];
+//    iv.image = nil;
+    //不重複使用畫面
+    
     iv1 = (UILabel *)[cell viewWithTag:200];
     iv2 = (UITextView *)[cell viewWithTag:300];
+    
+    if (dict[@"response"][@"docs"][i][@"headline"][@"main"] == nil) {
+        iv1.text = @"Loading...";
+    }
+    else {
+        iv1.text = dict[@"response"][@"docs"][i][@"headline"][@"main"];
+    }
+    
+    if (dict[@"response"][@"docs"][i][@"lead_paragraph"] == nil) {
+        iv2.text = @"Loading...";
+    }
+    else {
+         iv2.text = dict[@"response"][@"docs"][i][@"lead_paragraph"];
+    }
 
-    
-    iv1.text = dict[@"response"][@"docs"][i][@"headline"][@"main"];
-    iv2.text = dict[@"response"][@"docs"][i][@"lead_paragraph"];
-//    if (dict[@"response"][@"docs"][i][@"multimedia"][0][@"url"] == NULL) {
-//        iv.image = [UIImage imageNamed:@"Venice"];
-//    }
-//    else {
-//        iv.image =dict[@"response"][@"docs"][i][@"multimedia"][0][@"url"];
-//    }
-    
 
     NSLog(@"image = %@",dict[@"response"][@"docs"][i][@"multimedia"][0][@"url"]);
     self.urlString = dict[@"response"][@"docs"][i][@"web_url"];
@@ -91,7 +95,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 10;
+    return 8;
 }
 
 -(void)getdata {
@@ -100,8 +104,7 @@
     [manager GET:@"http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=fcbb2a25b234976333ca4a3cf30c4388%3A9%3A56417405"
        parameters:@{@"api-key":@"fcbb2a25b234976333ca4a3cf30c4388:9:56417405"}
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//              NSLog(@"success");
-//              NSLog(@"response: %@", responseObject);
+
               dict = responseObject;
             
              
@@ -110,6 +113,14 @@
               NSLog(@"failure: %@", error);
           }];
 }
+
+- (IBAction)btnBack:(id)sender {
+    ViewController *VC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+    [self presentViewController:VC animated:YES completion:nil];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 
